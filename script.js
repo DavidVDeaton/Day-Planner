@@ -1,3 +1,5 @@
+// Running Clock
+
 function updateTime () {
     var now = moment().format("dddd, MMMM Do, YYYY, h:mm:ss A");
   
@@ -7,13 +9,11 @@ function updateTime () {
 };
 
 setInterval(updateTime, 1000);
-
 updateTime();
 
-var hour = moment().format("h");
+// Past, Present, Future Textarea Highlights
 
-var ampm = moment().format("A");
-
+var hour = moment().format("hA");
 
 function midnight () {
 
@@ -85,83 +85,155 @@ function present5PM () {
 
 function updateHour() {
 
-    if (hour === "12" && ampm === "AM") {
-        midnight();
-    }
+    if (hour === "12AM") {midnight();}
 
-    else if (hour === "1" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "1AM") {midnight();}
 
-    else if (hour === "2" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "2AM") {midnight();}
 
-    else if (hour === "3" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "3AM") {midnight();}
 
-    else if (hour === "4" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "4AM") {midnight();}
 
-    else if (hour === "5" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "5AM") {midnight();}
 
-    else if (hour === "6" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "6AM") {midnight();}
 
-    else if (hour === "7" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "7AM") {midnight();}
 
-    else if (hour === "8" && ampm === "AM") {
-        midnight();
-    }
+    else if (hour === "8AM") {midnight();}
 
-    else if (hour === "9" && ampm === "AM") {
-        present9AM();
-    }
+    else if (hour === "9AM") {present9AM();}
 
-    else if (hour === "10" && ampm === "AM") {
-        present10AM();
-    }
+    else if (hour === "10AM") {present10AM();}
 
-    else if (hour === "11" && ampm === "AM") {
-        present11AM();
-    }
+    else if (hour === "11AM") {present11AM();}
 
-    else if (hour === "12" && ampm === "PM") {
-        present12PM();
-    }
+    else if (hour === "12PM") {present12PM();}
 
-    else if (hour === "1" && ampm === "PM") {
-        present1PM();
-    }
+    else if (hour === "1PM") {present1PM();}
 
-    else if (hour === "2" && ampm === "PM") {
-        present2PM();
-    }
+    else if (hour === "2PM") {present2PM();}
 
-    else if (hour === "3" && ampm === "PM") {
-        present3PM();
-    }
+    else if (hour === "3PM") {present3PM();}
 
-    else if (hour === "4" && ampm === "PM") {
-        present4PM();
-    }
+    else if (hour === "4PM") {present4PM();}
 
-    else if (hour === "5" && ampm === "PM") {
-        present5PM();
-    }
+    else if (hour === "5PM") {present5PM();}
     
     console.log(hour);
-    console.log(ampm);
-
 };
 
-setInterval(updateHour, 60000); 
+setInterval(updateHour, 15000); 
 updateHour();
 
+// Save to localStorage
+
+$("#save9").click(function() {
+
+var text9 = document.getElementById("am9").value;
+
+console.log(text9);
+
+localStorage.setItem("9AM", text9);
+
+});
+
+$("#save10").click(function() {
+
+var text10 = document.getElementById("am10").value;
+    
+console.log(text10);
+    
+localStorage.setItem("10AM", text10);
+    
+});
+
+$("#save11").click(function() {
+
+var text11 = document.getElementById("am11").value;
+        
+console.log(text11);
+        
+localStorage.setItem("11AM", text11);
+        
+});
+
+$("#save12").click(function() {
+
+var text12 = document.getElementById("pm12").value;
+    
+console.log(text12);
+    
+localStorage.setItem("12PM", text12);
+    
+});
+    
+$("#save1").click(function() {
+    
+var text1 = document.getElementById("pm1").value;
+        
+console.log(text1);
+        
+localStorage.setItem("1PM", text1);
+        
+});
+    
+$("#save2").click(function() {
+    
+var text2 = document.getElementById("pm2").value;
+            
+console.log(text2);
+            
+localStorage.setItem("2PM", text2);
+            
+});
+
+$("#save3").click(function() {
+
+var text3 = document.getElementById("pm3").value;
+        
+console.log(text3);
+        
+localStorage.setItem("3PM", text3);
+        
+});
+    
+$("#save4").click(function() {
+        
+var text4 = document.getElementById("pm4").value;
+            
+console.log(text4);
+            
+localStorage.setItem("4PM", text4);
+    
+});
+        
+$("#save5").click(function() {
+        
+var text5 = document.getElementById("pm5").value;
+                
+console.log(text5);
+                
+localStorage.setItem("5PM", text5);
+                
+});
+
+// Display previously stored items from localStorage
+
+function dailySchedule () {
+
+    document.getElementById("am9").value = localStorage.getItem("9AM");
+    document.getElementById("am10").value = localStorage.getItem("10AM");
+    document.getElementById("am11").value = localStorage.getItem("11AM");
+    document.getElementById("pm12").value = localStorage.getItem("12PM");
+    document.getElementById("pm1").value = localStorage.getItem("1PM");
+    document.getElementById("pm2").value = localStorage.getItem("2PM");
+    document.getElementById("pm3").value = localStorage.getItem("3PM");
+    document.getElementById("pm4").value = localStorage.getItem("4PM");
+    document.getElementById("pm5").value = localStorage.getItem("5PM");
+
+    console.log(localStorage.getItem("9AM"));
+};
+
+dailySchedule();
