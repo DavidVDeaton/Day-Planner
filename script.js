@@ -13,8 +13,6 @@ updateTime();
 
 // Past, Present, Future Textarea Highlights
 
-var hour = moment().format("hA");
-
 function midnight () {
 
     $("#am9, #am10, #am11, #pm12, #pm1, #pm2, #pm3, #pm4, #pm5").addClass("future");
@@ -84,6 +82,8 @@ function present5PM () {
 };
 
 function updateHour() {
+
+    var hour = moment().format("hA");
 
     if (hour === "12AM") {midnight();}
 
