@@ -21,7 +21,33 @@ body {
     border-bottom: 10px solid black;
     margin-bottom: 1;
   }
+
+  #tall {
+    height: 280px;
+  }
+
+  #yesterday {
+    background-color: transparent;
+    border: solid;
+    border-color: white;
+  }
+
+  #today {
+    background-color: transparent;
+    border: solid;
+    border-color: white;
+  }
   
+  #tomorrow {
+    background-color: transparent;
+    border: solid;
+    border-color: white;
+  }
+
+  .green:hover {
+    color: #77dd77;
+  }
+
   .description{
     white-space: pre-wrap;
   }
