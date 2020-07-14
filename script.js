@@ -1,15 +1,41 @@
-// Running Clock
+// Running Clock 
 
 function updateTime () {
+    
     var now = moment().format("dddd, MMMM Do, YYYY, h:mm:ss A");
   
     $("#currentDay").text(now);
+
     $("#currentDay2").text(now);
 
 };
 
 setInterval(updateTime, 1000);
 updateTime();
+
+// Yesterday, Day and Tomorrow Variables + Navigation to Yesterday and Tomorrow's scheduler
+
+var yesterday = moment().subtract(1, "days").format("dddd");
+
+$("#yesterday").text(yesterday);
+
+$("#yesterday").click(function() {
+    
+    window.location.href = "yesterday.html";
+
+});
+
+var day = moment().format("dddd");
+
+var tomorrow = moment().add(1, "days").format("dddd");
+
+$("#tomorrow").text(tomorrow);
+
+$("#tomorrow").click(function() {
+    
+    window.location.href = "tomorrow.html";
+    
+});
 
 // Past, Present, Future Textarea Highlights
 
@@ -81,7 +107,7 @@ function present5PM () {
  
 };
 
-function updateHour() {
+function updateHighlight() {
 
     var hour = moment().format("hA");
 
@@ -124,116 +150,55 @@ function updateHour() {
     console.log(hour);
 };
 
-setInterval(updateHour, 15000); 
-updateHour();
+updateHighlight();
 
-// Save to localStorage
+function updateHour() {
 
-$("#save9").click(function() {
+    var newHour = moment().format("mmss");
 
-var text9 = document.getElementById("am9").value;
+    if (newHour === "0000") {updateHighlight();}
 
-console.log(text9);
-
-localStorage.setItem("9AM", text9);
-
-});
-
-$("#save10").click(function() {
-
-var text10 = document.getElementById("am10").value;
-    
-console.log(text10);
-    
-localStorage.setItem("10AM", text10);
-    
-});
-
-$("#save11").click(function() {
-
-var text11 = document.getElementById("am11").value;
-        
-console.log(text11);
-        
-localStorage.setItem("11AM", text11);
-        
-});
-
-$("#save12").click(function() {
-
-var text12 = document.getElementById("pm12").value;
-    
-console.log(text12);
-    
-localStorage.setItem("12PM", text12);
-    
-});
-    
-$("#save1").click(function() {
-    
-var text1 = document.getElementById("pm1").value;
-        
-console.log(text1);
-        
-localStorage.setItem("1PM", text1);
-        
-});
-    
-$("#save2").click(function() {
-    
-var text2 = document.getElementById("pm2").value;
-            
-console.log(text2);
-            
-localStorage.setItem("2PM", text2);
-            
-});
-
-$("#save3").click(function() {
-
-var text3 = document.getElementById("pm3").value;
-        
-console.log(text3);
-        
-localStorage.setItem("3PM", text3);
-        
-});
-    
-$("#save4").click(function() {
-        
-var text4 = document.getElementById("pm4").value;
-            
-console.log(text4);
-            
-localStorage.setItem("4PM", text4);
-    
-});
-        
-$("#save5").click(function() {
-        
-var text5 = document.getElementById("pm5").value;
-                
-console.log(text5);
-                
-localStorage.setItem("5PM", text5);
-                
-});
-
-// Display previously stored items from localStorage
-
-function dailySchedule () {
-
-    document.getElementById("am9").value = localStorage.getItem("9AM");
-    document.getElementById("am10").value = localStorage.getItem("10AM");
-    document.getElementById("am11").value = localStorage.getItem("11AM");
-    document.getElementById("pm12").value = localStorage.getItem("12PM");
-    document.getElementById("pm1").value = localStorage.getItem("1PM");
-    document.getElementById("pm2").value = localStorage.getItem("2PM");
-    document.getElementById("pm3").value = localStorage.getItem("3PM");
-    document.getElementById("pm4").value = localStorage.getItem("4PM");
-    document.getElementById("pm5").value = localStorage.getItem("5PM");
-
-    console.log(localStorage.getItem("9AM"));
 };
 
-dailySchedule();
+setInterval(updateHour, 1000); 
+updateHour();
+
+// Local storage set and get
+
+$(".save").click(function() {
+
+var text9 = document.getElementById("am9").value;
+var text10 = document.getElementById("am10").value;
+var text11 = document.getElementById("am11").value;
+var text12 = document.getElementById("pm12").value;
+var text1 = document.getElementById("pm1").value;
+var text2 = document.getElementById("pm2").value;
+var text3 = document.getElementById("pm3").value;
+var text4 = document.getElementById("pm4").value;
+var text5 = document.getElementById("pm5").value; 
+
+localStorage.setItem(day + "9", text9);
+localStorage.setItem(day + "10", text10);
+localStorage.setItem(day + "11", text11);
+localStorage.setItem(day + "12", text12);
+localStorage.setItem(day + "1", text1);
+localStorage.setItem(day + "2", text2);
+localStorage.setItem(day + "3", text3);
+localStorage.setItem(day + "4", text4);
+localStorage.setItem(day + "5", text5);
+});
+
+function todaySchedule () {
+
+    document.getElementById("am9").value = localStorage.getItem(day + "9");
+    document.getElementById("am10").value = localStorage.getItem(day + "10");
+    document.getElementById("am11").value = localStorage.getItem(day + "11");
+    document.getElementById("pm12").value = localStorage.getItem(day + "12");
+    document.getElementById("pm1").value = localStorage.getItem(day + "1");
+    document.getElementById("pm2").value = localStorage.getItem(day + "2");
+    document.getElementById("pm3").value = localStorage.getItem(day + "3");
+    document.getElementById("pm4").value = localStorage.getItem(day + "4");
+    document.getElementById("pm5").value = localStorage.getItem(day + "5");
+};
+
+todaySchedule();
