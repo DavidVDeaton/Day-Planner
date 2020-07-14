@@ -8,3 +8,6 @@ All calendar entries can be saved to the browser for user convenience. Additiona
 
 https://davidvdeaton.github.io/Day-Planner/.
 
+Day Planner Screenshot:
+
+![day planner](WorkDayScheduler.png?raw=true)
