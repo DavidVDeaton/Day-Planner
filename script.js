@@ -202,3 +202,20 @@ function todaySchedule () {
 };
 
 todaySchedule();
+
+function schedulerClear () {
+
+    var old = moment().subtract(2, "days").format("dddd");
+
+    localStorage.removeItem(old + "9");
+    localStorage.removeItem(old + "10");
+    localStorage.removeItem(old + "11");
+    localStorage.removeItem(old + "12");
+    localStorage.removeItem(old + "1");
+    localStorage.removeItem(old + "2");
+    localStorage.removeItem(old + "3");
+    localStorage.removeItem(old + "4");
+    localStorage.removeItem(old + "5");
+};
+
+schedulerClear();
