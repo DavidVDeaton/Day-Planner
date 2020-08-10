@@ -6,7 +6,7 @@ Features:
 
 All calendar entries can be saved to the browser for user convenience. Additionally, calendar automatically populates for the appropriate day as the day changes.
 
-https://davidvdeaton.github.io/Day-Planner/.
+https://davidvdeaton.github.io/workday-scheduler/.
 
 Day Planner Screenshot:
 
